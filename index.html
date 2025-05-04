@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body & Soul - Brand Guide</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-timeline/7.4.9/vis-timeline-graph2d.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-timeline/7.4.9/vis-timeline-graph2d.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'soul-gold': '#D4AF37',
+                        'vinyl-black': '#191919',
+                        'brew-brown': '#704214',
+                        'comfort-orange': '#E67E22',
+                        'fresh-mint': '#2ECC71'
+                    },
+                    fontFamily: {
+                        'calistoga': ['Calistoga', 'cursive'],
+                        'montserrat': ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .bg-texture {
+            background-color: #191919;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .timeline-container {
+            height: 400px;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .vis-timeline {
+            border: none !important;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .vis-item {
+            border-color: #D4AF37;
+            background-color: rgba(212, 175, 55, 0.2);
+            color: white;
+        }
+        .vis-item.vis-selected {
+            background-color: rgba(212, 175, 55, 0.5);
+            border-color: #D4AF37;
+        }
+        .vis-time-axis .vis-text {
+            color: #D4AF37;
+        }
+        .vis-timeline {
+            background-color: rgba(25, 25, 25, 0.3);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #191919;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        @keyframes pulse-gold {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+            }
+        }
+        .pulse-animation {
+            animation: pulse-gold 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-texture text-white">
+    <nav class="bg-vinyl-black py-4 px-6 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <span class="font-calistoga text-soul-gold text-xl mr-2">←</span>
+                <span>Back to Selection</span>
+            </a>
+            <div class="font-calistoga text-soul-gold text-xl">BODY & SOUL</div>
+        </div>
+    </nav>
+
+    <header class="py-20 px-4 relative overflow-hidden" data-aos="fade-in">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-vinyl-black opacity-80"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-vinyl-black to-transparent"></div>
+        </div>
+        <div class="container mx-auto relative z-10">
+            <h1 class="font-calistoga text-5xl md:text-7xl text-soul-gold text-center mb-4">BODY & SOUL</h1>
+            <p class="text-xl md:text-2xl text-center max-w-3xl mx-auto italic">Feed Your Rhythm, Nourish Your Soul</p>
+            <div class="mt-12 flex justify-center">
+                <span class="px-4 py-2 bg-soul-gold text-vinyl-black rounded-full font-bold">DJ'ed Popup Theme Brunch</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-12 px-4">
+        <section class="mb-20" data-aos="fade-up">
+            <h2 class="font-calistoga text-3xl mb-6 text-soul-gold">Brand Essence</h2>
+            <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Core Values</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                                Community connection through music and food
+                            </li>
+                            <li class="flex items-center">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                                Authentic experiences
+                            </li>
+                            <li class="flex items-center">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                                Creative expression
+                            </li>
+                            <li class="flex items-center">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                                Local collaboration
+                            </li>
+                            <li class="flex items-center">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                                Inclusive atmosphere
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Brand Promise</h3>
+                        <p class="italic text-soul-gold">Body & Soul creates an immersive brunch experience where soulful music, comfort food, and craft beverages come together to energize both body and spirit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="font-calistoga text-3xl mb-6 text-soul-gold">Brand Story</h2>
+            <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                <p class="mb-4">Body & Soul was born from a passion for bringing people together through two universal languages: music and food. In a world constantly rushing, we create a space where time slows down, allowing guests to truly connect with themselves, the music, and their community.</p>
+                <p>Starting in local breweries, our popup events transform ordinary spaces into vibrant gatherings where soul music fills the air, comfort food satisfies cravings, and handcrafted beverages refresh the spirit. Body & Soul isn't just a brunch—it's a multisensory experience that leaves you feeling both nourished and inspired.</p>
+            </div>
+        </section>
+
+        <section class="mb-20" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="font-calistoga text-3xl mb-6 text-soul-gold">Visual Identity</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Logo Concept</h3>
+                    <div class="flex justify-center items-center h-64 border-2 border-soul-gold rounded-lg mb-4">
+                        <div class="text-center">
+                            <div class="font-calistoga text-4xl text-soul-gold mb-2">BODY & SOUL</div>
+                            <div class="text-sm italic">A simple, bold wordmark with an ampersand that combines a musical note and spoon symbol</div>
+                        </div>
+                    </div>
+                    <p class="text-sm italic text-center">Logo visualization represents concept only - professional design recommended</p>
+                </div>
+                
+                <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Color Palette</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <div class="h-16 bg-soul-gold rounded-t-lg"></div>
+                            <div class="bg-white bg-opacity-10 p-2 rounded-b-lg">
+                                <p class="font-bold">Soul Gold</p>
+                                <p class="text-sm">#D4AF37</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="h-16 bg-vinyl-black rounded-t-lg"></div>
+                            <div class="bg-white bg-opacity-10 p-2 rounded-b-lg">
+                                <p class="font-bold">Vinyl Black</p>
+                                <p class="text-sm">#191919</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="h-16 bg-brew-brown rounded-t-lg"></div>
+                            <div class="bg-white bg-opacity-10 p-2 rounded-b-lg">
+                                <p class="font-bold">Brew Brown</p>
+                                <p class="text-sm">#704214</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="h-16 bg-comfort-orange rounded-t-lg"></div>
+                            <div class="bg-white bg-opacity-10 p-2 rounded-b-lg">
+                                <p class="font-bold">Comfort Orange</p>
+                                <p class="text-sm">#E67E22</p>
+                            </div>
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <div class="h-16 bg-fresh-mint rounded-t-lg"></div>
+                            <div class="bg-white bg-opacity-10 p-2 rounded-b-lg">
+                                <p class="font-bold">Fresh Mint</p>
+                                <p class="text-sm">#2ECC71</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mt-8">
+                <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Typography</h3>
+                    <div class="mb-6">
+                        <p class="text-sm mb-2">Headings: Calistoga</p>
+                        <p class="font-calistoga text-4xl text-soul-gold">BODY & SOUL</p>
+                        <p class="font-calistoga text-2xl">Feed Your Rhythm</p>
+                    </div>
+                    <div>
+                        <p class="text-sm mb-2">Body: Montserrat</p>
+                        <p class="font-montserrat">Body & Soul creates an immersive brunch experience where soulful music, comfort food, and craft beverages come together.</p>
+                        <p class="font-montserrat font-semibold mt-2">Community connection through music and food</p>
+                    </div>
+                </div>
+                
+                <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Imagery Style</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                            Warm, natural lighting
+                        </li>
+                        <li class="flex items-center">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                            Authentic moments of connection
+                        </li>
+                        <li class="flex items-center">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                            Close-ups of food that highlight texture and craftsmanship
+                        </li>
+                        <li class="flex items-center">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                            Action shots of DJs and dancing
+                        </li>
+                        <li class="flex items-center">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                            Behind-the-scenes glimpses of food and drink preparation
+                        </li>
+                    </ul>
+                    <div class="grid grid-cols-3 gap-2 mt-4">
+                        <div class="aspect-square bg-soul-gold bg-opacity-20 rounded flex items-center justify-center">
+                            <span class="text-4xl">📷</span>
+                        </div>
+                        <div class="aspect-square bg-soul-gold bg-opacity-20 rounded flex items-center justify-center">
+                            <span class="text-4xl">🎵</span>
+                        </div>
+                        <div class="aspect-square bg-soul-gold bg-opacity-20 rounded flex items-center justify-center">
+                            <span class="text-4xl">🍽️</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20" data-aos="fade-up" data-aos-delay="300">
+            <h2 class="font-calistoga text-3xl mb-6 text-soul-gold">Voice & Messaging</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Brand Voice</h3>
+                    <ul class="space-y-4">
+                        <li class="p-4 bg-white bg-opacity-5 rounded">
+                            <p class="font-bold mb-1">Conversational and warm</p>
+                            <p class="italic text-sm">"Hey there, soul family! Ready to start your Sunday with some good vibrations?"</p>
+                        </li>
+                        <li class="p-4 bg-white bg-opacity-5 rounded">
+                            <p class="font-bold mb-1">Knowledgeable but not pretentious</p>
+                            <p class="italic text-sm">"Our next track is inspired by the Philadelphia soul sound of the 70s—smooth strings and that unmistakable groove that just makes you want to move."</p>
+                        </li>
+                        <li class="p-4 bg-white bg-opacity-5 rounded">
+                            <p class="font-bold mb-1">Playful with occasional music references</p>
+                            <p class="italic text-sm">"Time to turn up the flavor and the volume—these biscuits are hitting all the right notes today!"</p>
+                        </li>
+                        <li class="p-4 bg-white bg-opacity-5 rounded">
+                            <p class="font-bold mb-1">Passionate about food, music, and community</p>
+                            <p class="italic text-sm">"We believe breaking bread and breaking beats together creates the kind of connections that last."</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Key Messages</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-soul-gold text-vinyl-black rounded-full">"Where rhythm meets comfort"</span>
+                        <span class="px-4 py-2 bg-soul-gold text-vinyl-black rounded-full">"Community brunch with a beat"</span>
+                        <span class="px-4 py-2 bg-soul-gold text-vinyl-black rounded-full">"Homemade food, handcrafted beats"</span>
+                        <span class="px-4 py-2 bg-soul-gold text-vinyl-black rounded-full">"Dance while you dine"</span>
+                        <span class="px-4 py-2 bg-soul-gold text-vinyl-black rounded-full">"Local ingredients, global rhythms"</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mt-8 mb-4">Social Media Hashtags</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded">#BodyAndSoulBrunch</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded">#FeedYourRhythm</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded">#SoulfulSundays</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded">#CraftAndComfort</span>
+                        <span class="px-3 py-1 bg-white bg-opacity-10 rounded">#LocalBrunch</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20" data-aos="fade-up" data-aos-delay="400">
+            <h2 class="font-calistoga text-3xl mb-6 text-soul-gold">Experience Design</h2>
+            <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Atmosphere</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                                <span>DJ booth visible and central to the space</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                                <span>Casual seating with some communal tables to encourage interaction</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                                <span>Dance space that naturally forms as the event progresses</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                                <span>Warm lighting with subtle gold accents</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                                <span>Minimalist decor that allows the brewery's character to shine through</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Signature Elements</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                                <span>Custom playlist QR codes on tables</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                                <span>"Soul Food" menu with music-inspired dish names</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                                <span>Specialty non-alcoholic "Rhythm Refreshers" that complement the brewery's beer offerings</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                                <span>Featured local artist/DJ spotlight each event</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                                <span>Community "Soul Board" where guests can leave notes about their experience</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold mb-4">Customer Journey</h3>
+                    <div class="timeline-container" id="timelineContainer"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20" data-aos="fade-up" data-aos-delay="500">
+            <h2 class="font-calistoga text-3xl mb-6 text-soul-gold">Menu Concept</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Food Categories</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 border border-soul-gold rounded">
+                            <p class="font-calistoga text-soul-gold">Opening Acts</p>
+                            <p class="text-sm italic">Starters</p>
+                        </div>
+                        <div class="p-4 border border-soul-gold rounded">
+                            <p class="font-calistoga text-soul-gold">Chart Toppers</p>
+                            <p class="text-sm italic">Main dishes</p>
+                        </div>
+                        <div class="p-4 border border-soul-gold rounded">
+                            <p class="font-calistoga text-soul-gold">B-Sides</p>
+                            <p class="text-sm italic">Sides</p>
+                        </div>
+                        <div class="p-4 border border-soul-gold rounded">
+                            <p class="font-calistoga text-soul-gold">Sweet Tracks</p>
+                            <p class="text-sm italic">Desserts</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Sample Signature Items</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-white bg-opacity-5 rounded">
+                            <p class="font-bold text-soul-gold">"Bass & Biscuits"</p>
+                            <p>Buttermilk biscuits with house-made jam and whipped butter</p>
+                        </div>
+                        <div class="p-4 bg-white bg-opacity-5 rounded">
+                            <p class="font-bold text-soul-gold">"Soulful Scramble"</p>
+                            <p>Farm-fresh scrambled eggs with seasonal vegetables</p>
+                        </div>
+                        <div class="p-4 bg-white bg-opacity-5 rounded">
+                            <p class="font-bold text-soul-gold">"Vinyl Waffles"</p>
+                            <p>Round waffles with record-inspired design and rotating toppings</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mt-8 mb-4">Beverage Program</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                            <span><span class="text-soul-gold">"Rhythm Refreshers"</span> - signature non-alcoholic drinks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                            <span><span class="text-soul-gold">"Local Beats"</span> - featured brewery selections</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2"></span>
+                            <span><span class="text-soul-gold">"Remix"</span> - suggested beer/refresher pairings</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20" data-aos="fade-up" data-aos-delay="600">
+            <h2 class="font-calistoga text-3xl mb-6 text-soul-gold">Marketing & Growth Strategy</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Promotion Channels</h3>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="px-3 py-1 bg-soul-gold text-vinyl-black rounded-full">Instagram</span>
+                        <span class="px-3 py-1 bg-soul-gold text-vinyl-black rounded-full">Spotify</span>
+                        <span class="px-3 py-1 bg-soul-gold text-vinyl-black rounded-full">Local Food Blogs</span>
+                        <span class="px-3 py-1 bg-soul-gold text-vinyl-black rounded-full">Brewery's Customer Base</span>
+                        <span class="px-3 py-1 bg-soul-gold text-vinyl-black rounded-full">Local Radio</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-4">Collaboration Opportunities</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                            <span>Guest chef pop-ups</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                            <span>DJ residencies</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                            <span>Local food producer spotlights</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                            <span>Cross-promotion with complementary local businesses</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-vinyl-black bg-opacity-50 p-8 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Growth Metrics</h3>
+                    <div class="h-64 mb-4">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-4">Success Metrics</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                            <span>Attendance growth and return rate</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                            <span>Social media engagement and user-generated content</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                            <span>Brewery beer sales during events</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                            <span>Waitlist demand</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="h-2 w-2 bg-soul-gold rounded-full mr-2 mt-2"></span>
+                            <span>Press coverage and community recognition</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="fixed bottom-6 right-6">
+        <a href="#" class="block w-12 h-12 rounded-full bg-soul-gold flex items-center justify-center pulse-animation">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-vinyl-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+            </svg>
+        </a>
+    </div>
+
+    <footer class="bg-vinyl-black py-12 px-4">
+        <div class="container mx-auto text-center">
+            <div class="font-calistoga text-soul-gold text-2xl mb-4">BODY & SOUL</div>
+            <p class="italic mb-6">Feed Your Rhythm, Nourish Your Soul</p>
+            <p class="text-sm opacity-60">© 2025 Body & Soul. All rights reserved.</p>
+            <div class="mt-6">
+                <a href="index.html" class="text-soul-gold hover:underline">Back to Brand Selection</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50
+            });
+            
+            // Timeline
+            const container = document.getElementById('timelineContainer');
+            
+            // Create a DataSet with items
+            const items = new vis.DataSet([
+                {id: 1, content: 'Discover', start: '2025-01-01'},
+                {id: 2, content: 'Anticipate', start: '2025-01-08'},
+                {id: 3, content: 'Arrive', start: '2025-01-15'},
+                {id: 4, content: 'Experience', start: '2025-01-15', end: '2025-01-16'},
+                {id: 5, content: 'Share', start: '2025-01-16'},
+                {id: 6, content: 'Return', start: '2025-01-22'}
+            ]);
+            
+            // Configuration for the Timeline
+            const options = {
+                stack: true,
+                horizontalScroll: true,
+                zoomKey: 'ctrlKey',
+                maxHeight: '400px',
+                minHeight: '300px',
+                tooltip: {
+                    followMouse: true,
+                    overflowMethod: 'cap'
+                }
+            };
+            
+            // Create a Timeline
+            const timeline = new vis.Timeline(container, items, options);
+            
+            // Growth chart
+            const growthCtx = document.getElementById('growthChart').getContext('2d');
+            const growthChart = new Chart(growthCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
+                    datasets: [
+                        {
+                            label: 'Projected Attendance',
+                            data: [45, 60, 85, 120, 150, 175],
+                            borderColor: '#D4AF37',
+                            backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Return Customers',
+                            data: [0, 15, 30, 50, 75, 95],
+                            borderColor: '#E67E22',
+                            backgroundColor: 'rgba(230, 126, 34, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#D4AF37'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#D4AF37'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#FFFFFF'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
